@@ -6,11 +6,6 @@ namespace CsharpPiano_Sound
 {
     class Program
     {
-        public void Variables()
-        {
-            public zstring[] lines = { };
-        public int PIN = 13;
-        public int pauze = 100;
         public string[,] Notes = new string[,]
         {
                 {"c",  "16",  "33",  "65", "131", "262", "523", "1047", "2093", "4186"},
@@ -26,66 +21,52 @@ namespace CsharpPiano_Sound
                 {"as", "29",  "58",  "117", "233", "466", "932", "1865", "3729", "7459"},
                 {"b",  "31",  "62",  "124", "247", "494", "988", "1976", "3951", "7902"},
         };
-
-        public int C = 0;
-        public int CS = 1;
-        public int D = 2;
-        public int DS = 3;
-        public int E = 4;
-        public int F = 5;
-        public int FS = 6;
-        public int G = 7;
-        public int GS = 8;
-        public int A = 9;
-        public int AS = 10;
-        public int B = 11;
-        public int db = 1;
-        public int eb = 3;
-        public int gb = 6;
-        public int ab = 8;
-        public int bb = 10;
-
-    }
-
-    static void Main(string[] args)
-    {
-
-
-        // input file name
-        string name = Console.ReadLine();
-        if (File.Exists(name))
+        public static void vars()
         {
-            lines = File.ReadAllLines(name);
 
         }
 
-        // for (int i = 0; i < 11; i++)
-        // {
-        //     for (int j = 0; j < 9; j++)
-        //     {
 
-        //         Console.WriteLine(i + "," + j + ":" + Notes[i, j]);
-
-        //     }
-        // }
-        for (int i = 0; i < lines.Length; i++)
+        static void Main(string[] args)
         {
-            Console.WriteLine(lines[i]);
-            Transcode(lines[i]);
+            int i = 0;
+            string[] lines = { };
+
+            // input file name
+            string name = Console.ReadLine();
+            if (File.Exists(name))
+            {
+                lines = File.ReadAllLines(name);
+
+                foreach (var line in lines)
+                {
+                    Program.Transcode(lines[i]);
+                    i++;
+                }
+
+            }
+
+
+
+            // wait before closing
+            Console.ReadKey();
+            i = 0;
         }
-        Console.ReadKey();
 
-
-    }
-
-    public int Transcode(string str)
-    {
-        Notes[0, 5];
-
-        int sendback = 0;
-        // sendback =;
-        return sendback;
+        public static int Transcode(string tr)
+        {
+            if (Str == "sup")
+            {
+                int Temp = 1;
+                return Temp;
+            }
+            else
+            {
+                return 5;
+            }
+        }
     }
 }
-}
+
+
 
