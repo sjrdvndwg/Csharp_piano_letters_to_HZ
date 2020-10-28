@@ -21,15 +21,13 @@ namespace CsharpPiano_Sound
                 {"as", "29",  "58",  "117", "233", "466", "932", "1865", "3729", "7459"},
                 {"b",  "31",  "62",  "124", "247", "494", "988", "1976", "3951", "7902"},
         };
-        public static void vars()
-        {
 
-        }
+        public int octave;
+
 
 
         static void Main(string[] args)
         {
-            int i = 0;
             string[] lines = { };
 
             // input file name
@@ -40,8 +38,9 @@ namespace CsharpPiano_Sound
 
                 foreach (var line in lines)
                 {
-                    Program.Transcode(lines[i]);
-                    i++;
+                    Program.Octave(line);
+                    Program.Transcode(line);
+                    Console.WriteLine(line);
                 }
 
             }
@@ -50,20 +49,58 @@ namespace CsharpPiano_Sound
 
             // wait before closing
             Console.ReadKey();
-            i = 0;
+
         }
 
-        public static int Transcode(string tr)
+        public static int Octave(string Str)
         {
-            if (Str == "sup")
+            if (Str.StartsWith("1"))
             {
-                int Temp = 1;
-                return Temp;
+                return 1;
             }
-            else
+            else if (Str.StartsWith("2"))
+            {
+                return 2;
+            }
+            else if (Str.StartsWith("3"))
+            {
+                return 3;
+            }
+            else if (Str.StartsWith("4"))
+            {
+                return 4;
+            }
+            else if (Str.StartsWith("5"))
             {
                 return 5;
             }
+            else if (Str.StartsWith("6"))
+            {
+                return 6;
+            }
+            else if (Str.StartsWith("7"))
+            {
+                return 7;
+            }
+            else if (Str.StartsWith("8"))
+            {
+                return 8;
+            }
+            else if (Str.StartsWith("9"))
+            {
+                return 9;
+            }
+            else
+            {
+                return 69;
+            }
+
+        }
+        public static int Transcode(string Str)
+        {
+
+            int Freq = 0;
+            return Freq;
         }
     }
 }
