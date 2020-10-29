@@ -94,8 +94,10 @@ namespace CsharpPiano_Sound
         }
         public static int Transcode(string Str)
         {
-            char[] charArr = Str.ToCharArray();
+            string str = Str.Remove(0, 1);
 
+            char[] charArr = str.ToCharArray();
+            Console.WriteLine(charArr[1]);
             int Freq = 0;
             return Freq;
         }
