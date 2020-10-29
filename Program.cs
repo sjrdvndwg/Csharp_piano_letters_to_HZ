@@ -22,10 +22,6 @@ namespace CsharpPiano_Sound
                 {"b",  "31",  "62",  "124", "247", "494", "988", "1976", "3951", "7902"},
         };
 
-        public int octave;
-
-
-
         static void Main(string[] args)
         {
             string[] lines = { };
@@ -38,8 +34,8 @@ namespace CsharpPiano_Sound
 
                 foreach (var line in lines)
                 {
-                    Program.Octave(line);
-                    Program.Transcode(line);
+                    int Octav = Program.Octave(line);
+                    int Hertz = Program.Transcode(line);
                     // Console.WriteLine(line);
                 }
 
