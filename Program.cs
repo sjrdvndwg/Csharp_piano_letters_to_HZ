@@ -40,7 +40,7 @@ namespace CsharpPiano_Sound
                 {
                     Program.Octave(line);
                     Program.Transcode(line);
-                    Console.WriteLine(line);
+                    // Console.WriteLine(line);
                 }
 
             }
@@ -98,6 +98,7 @@ namespace CsharpPiano_Sound
         }
         public static int Transcode(string Str)
         {
+            char[] charArr = Str.ToCharArray();
 
             int Freq = 0;
             return Freq;
