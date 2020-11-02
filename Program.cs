@@ -26,8 +26,11 @@ namespace CsharpPiano_Sound
         {
             string[] lines = { };
 
+
+
             // input file name
-            string name = Console.ReadLine();
+            string temp = Console.ReadLine();
+            string name = temp + ".txt";
             if (File.Exists(name))
             {
                 lines = File.ReadAllLines(name);
@@ -42,7 +45,7 @@ namespace CsharpPiano_Sound
             }
 
 
-
+            File.OpenWrite(temp + "_transcoded.txt");
             // wait before closing
             Console.ReadKey();
 
@@ -94,10 +97,12 @@ namespace CsharpPiano_Sound
         }
         public static int Transcode(string Str)
         {
-            string str = Str.Remove(0, 1);
+            char[] charArr = Str.ToCharArray();
+            for (var i = 0; i < charArr.Length; i++)
+            {
+                Console.WriteLine(charArr[i]);
+            }
 
-            char[] charArr = str.ToCharArray();
-            Console.WriteLine(charArr[1]);
             int Freq = 0;
             return Freq;
         }
