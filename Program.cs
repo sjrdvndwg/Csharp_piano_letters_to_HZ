@@ -35,63 +35,84 @@ namespace CsharpPiano_Sound
             {
                 lines = File.ReadAllLines(name);
 
+
                 foreach (var line in lines)
                 {
-                    int Octav = Program.Octave(line);
-                    int Hertz = Program.Transcode(line);
+                    string temp_line = "";
+                    if (line == "")
+                    {
+
+                    }
+                    char Octav = Program.Octave(line);
+
+
+                    temp_line = line.Trim(Octav);
+                    string line2 = temp_line;
+                    temp_line = line2.Trim(Convert.ToChar("|"));
+                    Console.WriteLine(temp_line);
+                    // char[] line_temp = line.ToCharArray();
+
+                    // for (var i = 0; line_temp.Length > i; i++)
+                    // {
+                    //     Console.WriteLine(line_temp[i]);
+                    // }
+                    // Array.Clear(line_temp, 0, 26);
+                    // int Hertz = Program.Transcode(line_temp);
                     // Console.WriteLine(line);
                 }
 
             }
 
 
-            File.OpenWrite(temp + "_transcoded.txt");
+            // File.OpenWrite(temp + "_transcoded.txt");
+            string pad = temp + "_transcoded.txt";
+            File.WriteAllLines(pad, lines);
             // wait before closing
             Console.ReadKey();
 
         }
 
-        public static int Octave(string Str)
+        public static char Octave(string Str)
         {
             if (Str.StartsWith("1"))
             {
-                return 1;
+                return Convert.ToChar("1");
             }
             else if (Str.StartsWith("2"))
             {
-                return 2;
+                return Convert.ToChar("2");
             }
             else if (Str.StartsWith("3"))
             {
-                return 3;
+                return Convert.ToChar("3");
             }
             else if (Str.StartsWith("4"))
             {
-                return 4;
+                return Convert.ToChar("4");
             }
             else if (Str.StartsWith("5"))
             {
-                return 5;
+                return Convert.ToChar("5");
             }
             else if (Str.StartsWith("6"))
             {
-                return 6;
+                return Convert.ToChar("6");
             }
             else if (Str.StartsWith("7"))
             {
-                return 7;
+                return Convert.ToChar("7");
             }
             else if (Str.StartsWith("8"))
             {
-                return 8;
+                return Convert.ToChar("8");
             }
             else if (Str.StartsWith("9"))
             {
-                return 9;
+                return Convert.ToChar("9");
             }
             else
             {
-                return 69;
+                return Convert.ToChar("`");
             }
 
         }
@@ -100,7 +121,7 @@ namespace CsharpPiano_Sound
             char[] charArr = Str.ToCharArray();
             for (var i = 0; i < charArr.Length; i++)
             {
-                Console.WriteLine(charArr[i]);
+                // Console.WriteLine(charArr[i]);
             }
 
             int Freq = 0;
