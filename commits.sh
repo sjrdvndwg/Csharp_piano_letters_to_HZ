@@ -3,5 +3,6 @@ git add ./*
 echo input the commit message
 
 read message
-git commit -m \"message\"
+echo $message
+git commit -m \" $message \"
 git push -u origin master

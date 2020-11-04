@@ -55,51 +55,60 @@ namespace CsharpPiano_Sound
                         Console.WriteLine("END");
                     }
                     char Octav = Program.Octave(line);
-
+                    int octaaf = Convert.ToInt32(Octav);
 
                     temp_line = line.Trim(Octav);
                     string line2 = temp_line;
                     temp_line = line2.Trim(Convert.ToChar("|"));
-                    Console.WriteLine(temp_line);
+                    // Console.WriteLine(temp_line);
 
                     char Hertz = Program.Transcode(temp_line);
                     int Freq;
                     if (Convert.ToString(Hertz).ToLower() == "a")
                     {
-                        Freq = Notes[9, (Octav + 1)]
+                        Freq = Convert.ToInt32(Notes[9, (octaaf + 1)]);
+                        Finalize(Freq, Program.time);
+
                     }
                     else if (Convert.ToString(Hertz).ToLower() == "b")
                     {
-                        Freq = Notes[11, (Octav + 1)]
-                    }
+                        Freq = Convert.ToInt32(Notes[11, (octaaf + 1)]);
+                        Finalize(Freq, Program.time);
 
+                    }
                     else if (Convert.ToString(Hertz).ToLower() == "c")
                     {
-                        Freq = Notes[0, (Octav + 1)]
-                    }
+                        Freq = Convert.ToInt32(Notes[0, (octaaf + 1)]);
+                        Finalize(Freq, Program.time);
 
+                    }
                     else if (Convert.ToString(Hertz).ToLower() == "d")
                     {
-                        Freq = Notes[2, (Octav + 1)]
-                    }
+                        Freq = Convert.ToInt32(Notes[2, (octaaf + 1)]);
+                        Finalize(Freq, Program.time);
 
+                    }
                     else if (Convert.ToString(Hertz).ToLower() == "e")
                     {
-                        Freq = Notes[4, (Octav + 1)]
-                    }
+                        Freq = Convert.ToInt32(Notes[4, (octaaf + 1)]);
+                        Finalize(Freq, Program.time);
 
+                    }
                     else if (Convert.ToString(Hertz).ToLower() == "f")
                     {
-                        Freq = Notes[5, (Octav + 1)]
-                    }
+                        Freq = Convert.ToInt32(Notes[5, (octaaf + 1)]);
+                        Finalize(Freq, Program.time);
 
+                    }
                     else if (Convert.ToString(Hertz).ToLower() == "g")
                     {
-                        Freq = Notes[7, (Octav + 1)]
+                        Freq = Convert.ToInt32(Notes[7, (octaaf + 1)]);
+                        Finalize(Freq, Program.time);
+
                     }
 
 
-                    Finalize(Program.Notes[Octav, Hertz], Program.time);
+
 
                 }
 
@@ -116,9 +125,11 @@ namespace CsharpPiano_Sound
 
         }
 
-        public static void Finalize(string Frequentie, int Duration)
+        public static void Finalize(int Frequentie, int Duration)
         {
             // TODO finish file writing capabilities and transfer the file name
+            Console.WriteLine(Frequentie + time);
+
             // File.AppendAllLines("");
         }
         public static char Octave(string Str) //finished for now
