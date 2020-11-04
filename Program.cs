@@ -1,12 +1,22 @@
 ﻿using System.Linq.Expressions;
+using System.Collections.Generic;
 using System;
 using System.IO;
 
 namespace CsharpPiano_Sound
 {
+
+    public static class Extensions
+    {
+        public static T[] Append<T>(this T[] array, T item)
+        {
+            return new List<T>(array) { item }.ToArray();
+        }
+    }
     class Program
     {
-        public string[,] Notes = new string[,]
+        public static int time = 100;
+        public static string[,] Notes = new string[,]
         {
                 {"c",  "16",  "33",  "65", "131", "262", "523", "1047", "2093", "4186"},
                 {"cs", "17",  "35",  "69", "139", "277", "554", "1109", "2217", "4435"},
@@ -25,12 +35,13 @@ namespace CsharpPiano_Sound
         static void Main(string[] args)
         {
             string[] lines = { };
-
+            int[] note = { };
 
 
             // input file name
             string temp = Console.ReadLine();
             string name = temp + ".txt";
+            File.OpenWrite(temp + "_transcoded.txt");
             if (File.Exists(name))
             {
                 lines = File.ReadAllLines(name);
@@ -39,9 +50,9 @@ namespace CsharpPiano_Sound
                 foreach (var line in lines)
                 {
                     string temp_line = "";
-                    if (line == "")
+                    if (line == "END")
                     {
-
+                        Console.WriteLine("END");
                     }
                     char Octav = Program.Octave(line);
 
@@ -50,29 +61,67 @@ namespace CsharpPiano_Sound
                     string line2 = temp_line;
                     temp_line = line2.Trim(Convert.ToChar("|"));
                     Console.WriteLine(temp_line);
-                    // char[] line_temp = line.ToCharArray();
 
-                    // for (var i = 0; line_temp.Length > i; i++)
-                    // {
-                    //     Console.WriteLine(line_temp[i]);
-                    // }
-                    // Array.Clear(line_temp, 0, 26);
-                    // int Hertz = Program.Transcode(line_temp);
-                    // Console.WriteLine(line);
+                    char Hertz = Program.Transcode(temp_line);
+                    int Freq;
+                    if (Convert.ToString(Hertz).ToLower() == "a")
+                    {
+                        Freq = Notes[9, (Octav + 1)]
+                    }
+                    else if (Convert.ToString(Hertz).ToLower() == "b")
+                    {
+                        Freq = Notes[11, (Octav + 1)]
+                    }
+
+                    else if (Convert.ToString(Hertz).ToLower() == "c")
+                    {
+                        Freq = Notes[0, (Octav + 1)]
+                    }
+
+                    else if (Convert.ToString(Hertz).ToLower() == "d")
+                    {
+                        Freq = Notes[2, (Octav + 1)]
+                    }
+
+                    else if (Convert.ToString(Hertz).ToLower() == "e")
+                    {
+                        Freq = Notes[4, (Octav + 1)]
+                    }
+
+                    else if (Convert.ToString(Hertz).ToLower() == "f")
+                    {
+                        Freq = Notes[5, (Octav + 1)]
+                    }
+
+                    else if (Convert.ToString(Hertz).ToLower() == "g")
+                    {
+                        Freq = Notes[7, (Octav + 1)]
+                    }
+
+
+                    Finalize(Program.Notes[Octav, Hertz], Program.time);
+
                 }
 
             }
 
 
-            // File.OpenWrite(temp + "_transcoded.txt");
+
             string pad = temp + "_transcoded.txt";
-            File.WriteAllLines(pad, lines);
+
+            // Console.WriteLine(Program.Notes[1, 2]);
+            // File.WriteAllLines(pad, note);
             // wait before closing
             Console.ReadKey();
 
         }
 
-        public static char Octave(string Str)
+        public static void Finalize(string Frequentie, int Duration)
+        {
+            // TODO finish file writing capabilities and transfer the file name
+            // File.AppendAllLines("");
+        }
+        public static char Octave(string Str) //finished for now
         {
             if (Str.StartsWith("1"))
             {
@@ -116,15 +165,18 @@ namespace CsharpPiano_Sound
             }
 
         }
-        public static int Transcode(string Str)
+        public static char Transcode(string Str)
         {
+            // TODO make it useful and actually do shit
+
+            char Freq = Convert.ToChar("i");
             char[] charArr = Str.ToCharArray();
             for (var i = 0; i < charArr.Length; i++)
             {
-                // Console.WriteLine(charArr[i]);
+
             }
 
-            int Freq = 0;
+
             return Freq;
         }
     }
